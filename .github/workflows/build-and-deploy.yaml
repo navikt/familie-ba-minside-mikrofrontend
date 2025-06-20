@@ -39,7 +39,7 @@ jobs:
 #        with:
 #          team: mitt-team-navn
 #          source: ./dist/
-#          destination: "tms-microfrontend-template"
+#          destination: "familie-ba-minside-mikrofrontend"
 #          destination: ${{ env.REPOSITORY_NAME }}
 #          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
@@ -56,7 +56,7 @@ jobs:
 #    needs: build
 #    with:
 #      cluster: dev-gcp
-#      id: "tms-microfrontend-template"
+#      id: "familie-ba-minside-mikrofrontend"
 #      url: ${{needs.build.outputs.upload_url}}
 #      commitmsg: ${{ github.event.head_commit.message}}
 #    secrets: inherit
@@ -67,7 +67,7 @@ jobs:
 #    needs: build
 #    with:
 #      cluster: prod-gcp
-#      id: "tms-microfrontend-template"
+#      id: "familie-ba-minside-mikrofrontend"
 #      url: ${{needs.build.outputs.upload_url}}
 #      commitmsg: ${{ github.event.head_commit.message}}
 #    secrets: inherit

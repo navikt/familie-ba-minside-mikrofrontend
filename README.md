@@ -1,6 +1,6 @@
-# tms-microfrontend-template
+# familie-ba-minside-mikrofrontend
 
-Kan brukes som utgangspunkt for å opprette nye microfrontends i Min Side.
+Mikrofrontend for [familie-ba-minside-frontend](https://github.com/navikt/familie-ba-minside-frontend)
 
 # Tilpass repoet
 
