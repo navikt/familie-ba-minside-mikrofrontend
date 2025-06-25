@@ -12,9 +12,9 @@ const text: Text = {
     en: "Child benefit",
   },
   microfrontendDescription: {
-    nb: "Se dokumenter og meld fra om endringer",
-    nn: "Sjå dokument og meld frå om endringar",
-    en: "View documents and notify Nav of changes",
+    nb: "Se dokumenter og meld fra om endringer.",
+    nn: "Sjå dokument og meld frå om endringar.",
+    en: "View documents and notify Nav of changes.",
   },
 };
 
