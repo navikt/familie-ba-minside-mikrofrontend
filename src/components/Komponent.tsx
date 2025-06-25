@@ -1,17 +1,28 @@
-import { Panel } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 import styles from "./Komponent.module.css";
+import { BarnetrygdIkon } from "./BarnetrygdIkon";
+import { ChevronRightIcon } from "@navikt/aksel-icons";
+import { url } from "../utils/url";
 
 interface Props {
-  tekst: string;
+  tittel: string;
+  beskrivelse: string;
 }
 
-const Komponent = ({ tekst }: Props) => {
+const Komponent = ({ tittel, beskrivelse }: Props) => {
   return (
-    <div className={styles.komponent}>
-      <Panel border>
-        <p>{tekst} 😊🎉</p>
-      </Panel>
-    </div>
+    <a className={styles.container} href={url}>
+      <span className={styles.tekstOgIkonContainer}>
+        <BarnetrygdIkon aria-hidden />
+        <span>
+          <Heading size="small" level="2">
+            {tittel}
+          </Heading>
+          <BodyLong size="medium">{beskrivelse}</BodyLong>
+        </span>
+      </span>
+      <ChevronRightIcon className={styles.chevron} aria-hidden fontSize="24px" />
+    </a>
   );
 };
 
