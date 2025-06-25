@@ -14,7 +14,7 @@ const text: Text = {
   microfrontendDescription: {
     nb: "Se dokumenter og meld fra om endringer",
     nn: "Se dokumenter og meld fra om endringer",
-    en: "View documents and report changes in situation",
+    en: "View documents and notify Nav of changes",
   },
 };
 
