@@ -2,9 +2,10 @@ import { describe, expect, it } from "vitest";
 import { render, screen } from "../utils/test-utils";
 import Komponent from "./Komponent";
 
-describe("Simple working test for Komponent", () => {
-  it("has a text", () => {
-    render(<Komponent tekst="tekst" />);
-    expect(screen.getByText(/tekst/)).toBeDefined();
+describe("Visningstest", () => {
+  it("Den viser tekst", () => {
+    render(<Komponent tittel="tittel" beskrivelse="beskrivelse" />);
+    expect(screen.getByText(/tittel/)).toBeDefined();
+    expect(screen.getByText(/beskrivelse/)).toBeDefined();
   });
 });
