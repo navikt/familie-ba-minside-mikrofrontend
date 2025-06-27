@@ -1,6 +1,6 @@
 # familie-ba-minside-mikrofrontend
 
-Mikrofrontend for [familie-ba-minside-frontend](https://github.com/navikt/familie-ba-minside-frontend)
+Mikrofrontend for [familie-ba-minside-frontend](https://github.com/navikt/familie-ba-minside-frontend).
 
 # Tilpass repoet
 
