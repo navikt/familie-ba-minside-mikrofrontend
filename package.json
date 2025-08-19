@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@navikt/aksel-icons": "^7.23.2",
+    "@navikt/aksel-icons": "^7.28.1",
     "@navikt/ds-css": "5.7.3",
     "@navikt/ds-react": "5.7.3",
     "@navikt/nav-dekoratoren-moduler": "3.1.3",
