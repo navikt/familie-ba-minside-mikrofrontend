@@ -1,4 +1,4 @@
-name: "Build and deploy"
+name: "Deploy dev&prod"
 on:
   push:
     branches:
@@ -15,14 +15,11 @@ jobs:
       id-token: "write"
       packages: "write"
 
-    outputs:
-      upload_url: ${{ steps.extract-manifest-url.outputs.upload_url }}
-
     steps:
-      - uses: "actions/checkout@v5"
-      - uses: "actions/setup-node@v5"
+      - uses: "actions/checkout@v4"
+      - uses: "actions/setup-node@v4"
         with:
-          node-version: 20
+          node-version: 22
           registry-url: "https://npm.pkg.github.com"
           cache: "npm"
 
@@ -33,39 +30,84 @@ jobs:
 
       - name: "Build application"
         run: "npm run build"
+        env:
+          ASTRO_KEY: ${{ secrets.ASTRO_KEY }}
 
-      - id: cdn-upload
+      - name: "Upload to cdn"
         uses: nais/deploy/actions/cdn-upload/v2@master
         with:
           team: teamfamilie
-          source: ./dist/
-          destination: "familie-ba-minside-mikrofrontend"
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          source: ./dist/client/_astro
+          destination: 'familie-ba-minside-mikrofrontend'
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # TODO NGHI dette var i gamle mikrofrontend, fortsatt nødvendig?
 
-      - name: "Extract manifest url"
-        id: extract-manifest-url
-        run: |
-          files="${{ steps.cdn-upload.outputs.uploaded }}"
-          first_file=$(echo $files | cut -d',' -f1)
-          echo "upload_url=https://cdn.nav.no/$first_file" >> $GITHUB_OUTPUT
+      - name: "Build and push"
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: min-side # Change this to your team name
 
-  update-manifest-dev-gcp:
-    uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v2.yaml@main
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
+
+  update-manifest-dev:
+    uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
     needs: build
     with:
+      id: "familie-ba-minside-mikrofrontend"
+      url: "http://familie-ba-minside-mikrofrontend" # Change the url to contain your application name. Example: http://my-app
+      #TODO NGHI url: ${{needs.build.outputs.upload_url}}
+      appname: "familie-ba-minside-mikrofrontend"
+      namespace: "min-side" # Change this to your namespace
       cluster: dev-gcp
-      id: "familie-ba-minside-mikrofrontend"
-      url: ${{needs.build.outputs.upload_url}}
       commitmsg: ${{ github.event.head_commit.message}}
+      fallback: "fallback" # Should containt the path to the fallback page after src/pages/[locale]/... Only needs to be changed if you move the fallback in the pages structure
+      ssr: true
     secrets: inherit
 
-  update-manifest-prod-gcp:
-    if: github.ref == 'refs/heads/main'
-    uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v2.yaml@main
-    needs: build
-    with:
-      cluster: prod-gcp
-      id: "familie-ba-minside-mikrofrontend"
-      url: ${{needs.build.outputs.upload_url}}
-      commitmsg: ${{ github.event.head_commit.message}}
-    secrets: inherit
+  # update-manifest-prod:
+  #   if: github.ref == 'refs/heads/main'
+  #   uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
+  #   needs: build
+  #   with:
+  #     id: "familie-ba-minside-mikrofrontend-id"
+  #     url: "http://familie-ba-minside-mikrofrontend.min-side"
+  #     appname: "familie-ba-minside-mikrofrontend"
+  #     namespace: "team-namespace"
+  #     cluster: prod-gcp
+  #     commitmsg: ${{ github.event.head_commit.message}}
+  #     fallback: "fallback" # Should containt the path to the fallback page after src/pages/[locale]/...
+  #     ssr: true
+  #   secrets: inherit
+
+  deploy-dev:
+    runs-on: "ubuntu-latest"
+    permissions:
+      contents: "read"
+      id-token: "write"
+    needs: [ build, update-manifest-dev ]
+    steps:
+      - uses: "actions/checkout@v4"
+      - name: "Deploy to dev"
+        uses: "nais/deploy/actions/deploy@v2"
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais/dev-gcp/nais.yaml
+          VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}
+
+  # deploy-prod:
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: "ubuntu-latest"
+  #   permissions:
+  #     contents: "read"
+  #     id-token: "write"
+  #   needs: [build, update-manifest-prod]
+
+  #   steps:
+  #     - uses: "actions/checkout@v4"
+  #     - name: "Deploy to prod"
+  #       uses: "nais/deploy/actions/deploy@v2"
+  #       env:
+  #         CLUSTER: prod-gcp
+  #         RESOURCE: nais/prod-gcp/nais.yaml
+  #         VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}          

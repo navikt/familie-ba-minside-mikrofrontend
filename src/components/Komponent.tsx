@@ -1,17 +1,19 @@
-import { BodyLong, Heading } from "@navikt/ds-react";
-import styles from "./Komponent.module.css";
-import { BarnetrygdIkon } from "./BarnetrygdIkon";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
-import { url } from "../utils/url";
+import { BodyLong, Heading } from "@navikt/ds-react";
+import { getUrl } from "../utils/url";
+import { BarnetrygdIkon } from "./BarnetrygdIkon";
+import styles from "./Komponent.module.css";
 
 interface Props {
   tittel: string;
   beskrivelse: string;
+  url: URL;
 }
 
-const Komponent = ({ tittel, beskrivelse }: Props) => {
+const Komponent = ({ tittel, beskrivelse, url }: Props) => {
+  const href = getUrl(url);
   return (
-    <a className={styles.container} href={url}>
+    <a className={styles.container} href={href}>
       <span className={styles.tekstOgIkonContainer}>
         <BarnetrygdIkon aria-hidden />
         <span>
