@@ -1,9 +1,9 @@
-name: "Deploy dev&prod"
+name: "Build and deploy dev + prod"
 on:
+  workflow_dispatch:
   push:
     branches:
       - "main"
-      - "dev-*"
 
 jobs:
   build:
@@ -31,21 +31,21 @@ jobs:
       - name: "Build application"
         run: "npm run build"
         env:
-          ASTRO_KEY: ${{ secrets.ASTRO_KEY }}
+          ASTRO_KEY: ${{ secrets.ASTRO_KEY }} # TODO: Verifiser at denne eksistrer/trengs
 
       - name: "Upload to cdn"
         uses: nais/deploy/actions/cdn-upload/v2@master
         with:
           team: teamfamilie
-          source: ./dist/client/_astro
+          source: ./dist/client/_astro # TODO: Fiks bygging (npm run build) og sjekk at denne stien er korrekt
           destination: 'familie-ba-minside-mikrofrontend'
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # TODO NGHI dette var i gamle mikrofrontend, fortsatt nødvendig?
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
       - name: "Build and push"
         uses: nais/docker-build-push@v0
         id: docker-build-push
         with:
-          team: min-side # Change this to your team name
+          team: teamfamilie
 
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}
@@ -55,16 +55,18 @@ jobs:
     needs: build
     with:
       id: "familie-ba-minside-mikrofrontend"
-      url: "http://familie-ba-minside-mikrofrontend" # Change the url to contain your application name. Example: http://my-app
+      url: "http://familie-ba-minside-mikrofrontend" # TODO: Skal kanskje være dev url? Mangler ".no"?
       #TODO NGHI url: ${{needs.build.outputs.upload_url}}
       appname: "familie-ba-minside-mikrofrontend"
-      namespace: "min-side" # Change this to your namespace
+      namespace: "teamfamilie"
       cluster: dev-gcp
       commitmsg: ${{ github.event.head_commit.message}}
+      # TODO: Finn ut av fallback page. Påkrevd parameter
       fallback: "fallback" # Should containt the path to the fallback page after src/pages/[locale]/... Only needs to be changed if you move the fallback in the pages structure
       ssr: true
     secrets: inherit
 
+  # TODO: Samme som dev, men bytt til prod-gcp
   # update-manifest-prod:
   #   if: github.ref == 'refs/heads/main'
   #   uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
