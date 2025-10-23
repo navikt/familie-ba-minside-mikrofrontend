@@ -15,6 +15,7 @@ jobs:
       id-token: "write"
       packages: "write"
 
+
     steps:
       - uses: "actions/checkout@v4"
       - uses: "actions/setup-node@v4"
@@ -30,14 +31,12 @@ jobs:
 
       - name: "Build application"
         run: "npm run build"
-        env:
-          ASTRO_KEY: ${{ secrets.ASTRO_KEY }} # TODO: Verifiser at denne eksistrer/trengs
 
       - name: "Upload to cdn"
         uses: nais/deploy/actions/cdn-upload/v2@master
         with:
           team: teamfamilie
-          source: ./dist/client/_astro # TODO: Fiks bygging (npm run build) og sjekk at denne stien er korrekt
+          source: ./dist/client/_astro
           destination: 'familie-ba-minside-mikrofrontend'
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
@@ -55,14 +54,12 @@ jobs:
     needs: build
     with:
       id: "familie-ba-minside-mikrofrontend"
-      url: "http://familie-ba-minside-mikrofrontend" # TODO: Skal kanskje være dev url? Mangler ".no"?
-      #TODO NGHI url: ${{needs.build.outputs.upload_url}}
+      url: "http://familie-ba-minside-mikrofrontend.teamfamilie"
       appname: "familie-ba-minside-mikrofrontend"
       namespace: "teamfamilie"
       cluster: dev-gcp
       commitmsg: ${{ github.event.head_commit.message}}
-      # TODO: Finn ut av fallback page. Påkrevd parameter
-      fallback: "fallback" # Should containt the path to the fallback page after src/pages/[locale]/... Only needs to be changed if you move the fallback in the pages structure
+      fallback: "fallback"
       ssr: true
     secrets: inherit
 
@@ -72,13 +69,13 @@ jobs:
   #   uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
   #   needs: build
   #   with:
-  #     id: "familie-ba-minside-mikrofrontend-id"
-  #     url: "http://familie-ba-minside-mikrofrontend.min-side"
+  #     id: "familie-ba-minside-mikrofrontend"
+  #     url: "http://http://familie-ba-minside-mikrofrontend.teamfamilie"
   #     appname: "familie-ba-minside-mikrofrontend"
-  #     namespace: "team-namespace"
+  #     namespace: "teamfamilie"
   #     cluster: prod-gcp
   #     commitmsg: ${{ github.event.head_commit.message}}
-  #     fallback: "fallback" # Should containt the path to the fallback page after src/pages/[locale]/...
+  #     fallback: "fallback"
   #     ssr: true
   #   secrets: inherit
 

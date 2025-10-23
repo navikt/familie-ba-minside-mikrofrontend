@@ -1,15 +1,14 @@
 ---
+import { URL_BARNETRYGD_MIN_SIDE } from "astro:env/server";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
 import { BodyLong, Heading } from "@navikt/ds-react";
-import { getUrl } from "../utils/url";
 import BarnetrygdIkon from "./BarnetrygdIkon.astro";
 import styles from "./Komponent.module.css";
 
-const { tittel, beskrivelse, url } = Astro.props;
+const { tittel, beskrivelse } = Astro.props;
 
-const href = getUrl(url);
 ---
-<a class={styles.container} href={href}>
+<a class={styles.container} href={URL_BARNETRYGD_MIN_SIDE}>
       <span class={styles.tekstOgIkonContainer}>
         <BarnetrygdIkon aria-hidden="true" />
         <span>

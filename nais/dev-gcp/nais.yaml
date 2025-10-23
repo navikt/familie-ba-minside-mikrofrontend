@@ -12,7 +12,7 @@ spec:
       runtime: nodejs
   tokenx:
     enabled: true
-  image: { { image } }
+  image: {{ image }}
   port: 3000
   liveness:
     path: /api/internal/isAlive
@@ -34,6 +34,6 @@ spec:
     requests:
       cpu: "20m"
       memory: 128Mi
-  env: # Add your environment variables here
-    - name: EXAMPLE_API_URL
-      value: "https://example.dev.nav.no/api"
+  env:
+    - name: URL_BARNETRYGD_MIN_SIDE
+      value: "https://familie-ba-minside.intern.dev.nav.no/barnetrygd/min-barnetrygd"
