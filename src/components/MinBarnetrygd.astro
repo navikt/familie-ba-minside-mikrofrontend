@@ -8,7 +8,7 @@ import styles from "./MinBarnetrygd.module.css";
 const { tittel, beskrivelse } = Astro.props;
 ---
 
-<a class={styles.container} href={URL_BARNETRYGD_MIN_SIDE}>
+<a id={styles.container} class={styles.container} href={URL_BARNETRYGD_MIN_SIDE}>
   <span class={styles.tekstOgIkonContainer}>
     <BarnetrygdIkon aria-hidden="true" />
     <span>
