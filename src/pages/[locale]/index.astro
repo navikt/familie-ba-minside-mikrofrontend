@@ -1,14 +1,14 @@
 ---
+import "@src/styles/aksel.css";
+import MinBarnetrygd from "@src/components/MinBarnetrygd.astro";
 import { text } from "@src/language/text";
 import type { Language } from "@src/language/types";
-import Komponent from "@src/components/Komponent.astro";
-import "@src/styles/aksel.css";
-import { isLocal } from "../../utils/environment";
+import { isLocal } from "@src/utils/environment";
+
 const language = Astro.currentLocale as Language;
 ---
 
-{isLocal &&
-<meta charset="UTF-8" />}
+{isLocal && <meta charset="UTF-8" />}
 <section class="familie-ba-minside-mikrofrontend">
-  <Komponent tittel={text.microfrontendTitle[language]} beskrivelse={text.microfrontendDescription[language]} />
+  <MinBarnetrygd tittel={text.microfrontendTitle[language]} beskrivelse={text.microfrontendDescription[language]} />
 </section>

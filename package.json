@@ -1,25 +1,29 @@
 {
   "name": "familie-ba-minside-mikrofrontend",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "mock": "tsx mock/server.ts",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
-    "typecheck": "tsc --noEmit",
-    "test": ""
+    "lint": "eslint './src/**/*.{js,ts,tsx}'",
+    "lint:fix": "eslint './src/**/*.{js,ts,tsx}' --fix",
+    "prettier": "prettier --plugin=prettier-plugin-astro --check './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
+    "prettier:fix": "prettier --plugin=prettier-plugin-astro --write './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "",
+    "validate": "yarn typecheck && yarn lint && yarn prettier"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
     "@astrojs/node": "9.0.0",
     "@astrojs/react": "4.4.0",
     "@navikt/aksel-icons": "6.1.1",
-    "@navikt/ds-css": "6.16.2",
-    "@navikt/ds-react": "6.16.2",
+    "@navikt/ds-css": "7.32.3",
+    "@navikt/ds-react": "7.32.3",
     "@navikt/nav-dekoratoren-moduler": "3.2.3",
     "@navikt/oasis": "3.4.0",
     "@opentelemetry/sdk-node": "0.202.0",
@@ -31,21 +35,35 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.3",
+    "@eslint/js": "9.38.0",
     "@hono/node-server": "1.11.2",
     "@types/node": "20.2.5",
     "@types/react": "18.2.64",
     "@types/react-dom": "18.2.21",
+    "eslint": "9.35.0",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
     "hono": "4.6.5",
     "husky": "9.1.7",
     "lint-staged": "16.1.6",
     "postcss": "8.5.3",
     "postcss-prefix-selector": "2.1.1",
+    "prettier": "3.6.2",
+    "prettier-plugin-astro": "0.14.1",
     "tsx": "4.7.1",
     "typescript": "5.3.3",
+    "typescript-eslint": "^8.43.0",
     "vitest": "3.2.4"
   },
+  "prettier": {
+    "printWidth": 120
+  },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro}": ["biome check --write --no-errors-on-unmatched"]
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro,css,md,html}": [
+      "biome check --write --no-errors-on-unmatched",
+      "prettier --plugin=prettier-plugin-astro --cache --write"
+    ]
   },
   "overrides": {
     "vite": "6.3.6"

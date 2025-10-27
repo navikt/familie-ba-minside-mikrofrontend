@@ -56,7 +56,7 @@ export default defineConfig({
       URL_BARNETRYGD_MIN_SIDE: envField.string({
         context: "server",
         access: "secret",
-        default: "http://localhost:3000/api/tms-astro-template", //TODO change default value
+        default: "http://localhost:3000/barnetrygd/min-barnetrygd",
       }),
     },
   },

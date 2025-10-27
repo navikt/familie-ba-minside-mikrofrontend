@@ -3,20 +3,20 @@ import { URL_BARNETRYGD_MIN_SIDE } from "astro:env/server";
 import { ChevronRightIcon } from "@navikt/aksel-icons";
 import { BodyLong, Heading } from "@navikt/ds-react";
 import BarnetrygdIkon from "./BarnetrygdIkon.astro";
-import styles from "./Komponent.module.css";
+import styles from "./MinBarnetrygd.module.css";
 
 const { tittel, beskrivelse } = Astro.props;
-
 ---
+
 <a class={styles.container} href={URL_BARNETRYGD_MIN_SIDE}>
-      <span class={styles.tekstOgIkonContainer}>
-        <BarnetrygdIkon aria-hidden="true" />
-        <span>
-          <Heading size="small" level="2">
-            {tittel}
-          </Heading>
-          <BodyLong size="medium">{beskrivelse}</BodyLong>
-        </span>
-      </span>
+  <span class={styles.tekstOgIkonContainer}>
+    <BarnetrygdIkon aria-hidden="true" />
+    <span>
+      <Heading size="small" level="2">
+        {tittel}
+      </Heading>
+      <BodyLong size="medium">{beskrivelse}</BodyLong>
+    </span>
+  </span>
   <ChevronRightIcon className={styles.chevron} aria-hidden="true" fontSize="24px" />
 </a>
