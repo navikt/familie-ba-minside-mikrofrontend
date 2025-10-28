@@ -5,12 +5,12 @@
   justify-content: space-between;
   border-radius: var(--a-border-radius-large);
   box-shadow: var(--a-shadow-xsmall);
-  color: #272727;
   text-decoration: none;
 }
 
 #container {
   background-color: var(--a-bg-default);
+  color: #272727;
 }
 
 .container:hover {
