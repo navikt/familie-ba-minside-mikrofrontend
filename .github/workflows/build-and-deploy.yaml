@@ -63,21 +63,20 @@ jobs:
       ssr: true
     secrets: inherit
 
-  # TODO: Samme som dev, men bytt til prod-gcp
-  # update-manifest-prod:
-  #   if: github.ref == 'refs/heads/main'
-  #   uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
-  #   needs: build
-  #   with:
-  #     id: "familie-ba-minside-mikrofrontend"
-  #     url: "http://http://familie-ba-minside-mikrofrontend.teamfamilie"
-  #     appname: "familie-ba-minside-mikrofrontend"
-  #     namespace: "teamfamilie"
-  #     cluster: prod-gcp
-  #     commitmsg: ${{ github.event.head_commit.message}}
-  #     fallback: "fallback"
-  #     ssr: true
-  #   secrets: inherit
+  update-manifest-prod:
+     if: github.ref == 'refs/heads/main'
+     uses: navikt/tms-deploy/.github/workflows/oppdater-mikrofrontend-manifest-v3.yaml@main
+     needs: build
+     with:
+       id: "familie-ba-minside-mikrofrontend"
+       url: "http://http://familie-ba-minside-mikrofrontend.teamfamilie"
+       appname: "familie-ba-minside-mikrofrontend"
+       namespace: "teamfamilie"
+       cluster: prod-gcp
+       commitmsg: ${{ github.event.head_commit.message}}
+       fallback: "fallback"
+       ssr: true
+     secrets: inherit
 
   deploy-dev:
     runs-on: "ubuntu-latest"
@@ -94,19 +93,18 @@ jobs:
           RESOURCE: nais/dev-gcp/nais.yaml
           VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}
 
-  # deploy-prod:
-  #   if: github.ref == 'refs/heads/main'
-  #   runs-on: "ubuntu-latest"
-  #   permissions:
-  #     contents: "read"
-  #     id-token: "write"
-  #   needs: [build, update-manifest-prod]
-
-  #   steps:
-  #     - uses: "actions/checkout@v4"
-  #     - name: "Deploy to prod"
-  #       uses: "nais/deploy/actions/deploy@v2"
-  #       env:
-  #         CLUSTER: prod-gcp
-  #         RESOURCE: nais/prod-gcp/nais.yaml
-  #         VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}          
+  deploy-prod:
+     if: github.ref == 'refs/heads/main'
+     runs-on: "ubuntu-latest"
+     permissions:
+       contents: "read"
+       id-token: "write"
+     needs: [build, update-manifest-prod]
+     steps:
+       - uses: "actions/checkout@v4"
+       - name: "Deploy to prod"
+         uses: "nais/deploy/actions/deploy@v2"
+         env:
+           CLUSTER: prod-gcp
+           RESOURCE: nais/prod-gcp/nais.yaml
+           VAR: image=${{ needs.build.outputs.image }},version=${{ github.sha }}
