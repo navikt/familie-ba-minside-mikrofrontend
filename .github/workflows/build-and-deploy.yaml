@@ -69,7 +69,7 @@ jobs:
      needs: build
      with:
        id: "familie-ba-minside-mikrofrontend"
-       url: "http://http://familie-ba-minside-mikrofrontend.teamfamilie"
+       url: "http://familie-ba-minside-mikrofrontend.teamfamilie"
        appname: "familie-ba-minside-mikrofrontend"
        namespace: "teamfamilie"
        cluster: prod-gcp
