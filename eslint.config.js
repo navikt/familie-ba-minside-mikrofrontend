@@ -1,8 +1,8 @@
-import { defineConfig } from "eslint/config";
 import eslint from "@eslint/js";
+import { defineConfig } from "eslint/config";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
-import jsxA11y from "eslint-plugin-jsx-a11y";
 
 export default defineConfig([
   eslint.configs.recommended,
@@ -11,7 +11,7 @@ export default defineConfig([
   react.configs.flat["jsx-runtime"],
   jsxA11y.flatConfigs.recommended,
   {
-    ignores: ["dist/**/*"],
+    ignores: ["dist/**/*", "src/env.d.ts"],
   },
   {
     settings: {
