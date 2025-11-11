@@ -1,9 +1,6 @@
 name: "Build and deploy dev"
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - "main"
 
 jobs:
   build:
