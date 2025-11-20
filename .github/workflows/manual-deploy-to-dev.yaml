@@ -42,6 +42,7 @@ jobs:
         id: docker-build-push
         with:
           team: teamfamilie
+          pull: true
 
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}
