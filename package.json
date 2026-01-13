@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro,css,md,html}": [
-      "prettier --check",
+      "prettier --plugin=prettier-plugin-astro --check './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
       "eslint --max-warnings=30"
     ]
   }
