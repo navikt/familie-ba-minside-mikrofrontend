@@ -17,6 +17,11 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: [ "version-update:semver-patch" ]
+    groups:
+      aksel:
+        patterns:
+          - "@navikt/aksel-icons"
+          - "@navikt/ds-*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
