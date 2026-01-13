@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
-    "@eslint/js": "9.38.0",
+    "@eslint/js": "9.39.2",
     "@hono/node-server": "1.19.6",
     "@types/node": "24.10.1",
     "@types/react": "19.2.1",
