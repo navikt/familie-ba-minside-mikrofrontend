@@ -18,7 +18,7 @@
     "validate": "yarn typecheck && yarn lint && yarn prettier"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.6",
+    "@astrojs/check": "0.9.7",
     "@astrojs/node": "9.5.4",
     "@astrojs/react": "4.4.2",
     "@navikt/aksel-icons": "7.38.0",
