@@ -18,18 +18,18 @@
     "validate": "yarn typecheck && yarn lint && yarn prettier"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.6",
+    "@astrojs/check": "0.9.8",
     "@astrojs/node": "9.5.4",
     "@astrojs/react": "4.4.2",
     "@navikt/aksel-icons": "7.38.0",
     "@navikt/ds-css": "7.38.0",
     "@navikt/ds-react": "7.38.0",
-    "@navikt/oasis": "4.1.1",
+    "@navikt/oasis": "4.1.4",
     "@opentelemetry/sdk-node": "0.214.0",
     "astro": "5.18.0",
     "pino": "10.3.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",
@@ -42,9 +42,9 @@
     "eslint-plugin-react": "7.37.5",
     "husky": "9.1.7",
     "lint-staged": "16.3.1",
-    "postcss": "8.5.8",
+    "postcss": "8.5.9",
     "postcss-prefix-selector": "2.1.1",
-    "prettier": "3.8.1",
+    "prettier": "3.8.2",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.56.1"
