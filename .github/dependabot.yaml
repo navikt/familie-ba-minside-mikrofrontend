@@ -26,6 +26,7 @@ updates:
           - "astro"
           - "@astrojs/node"
           - "@astrojs/react"
+          - "@astrojs/check"
       react:
         patterns:
           - "react"
