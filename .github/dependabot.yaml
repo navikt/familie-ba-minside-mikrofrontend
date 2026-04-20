@@ -18,11 +18,14 @@ updates:
       aksel:
         patterns:
           - "@navikt/aksel-icons"
-          - "@navikt/ds-*"
+          - "@navikt/ds-css"
+          - "@navikt/ds-react"
+          - "@navikt/ds-tokens"
       astro:
         patterns:
           - "astro"
-          - "@astrojs/*"
+          - "@astrojs/node"
+          - "@astrojs/react"
       react:
         patterns:
           - "react"
