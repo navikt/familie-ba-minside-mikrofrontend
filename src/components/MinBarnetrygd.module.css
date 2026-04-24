@@ -3,19 +3,24 @@
   padding: 1rem;
   align-items: center;
   justify-content: space-between;
-  border-radius: var(--a-border-radius-large);
-  box-shadow: var(--a-shadow-xsmall);
+  border-radius: var(--ax-radius-8);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.15),
+    0px 0px 1px 0px rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
 
 #container {
-  background-color: var(--a-bg-default);
+  background-color: var(--ax-bg-default);
   color: #272727;
 }
 
 .container:hover {
   cursor: pointer;
-  box-shadow: var(--a-shadow-small);
+  box-shadow:
+    0 3px 8px 0 rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+    0px 0px 1px 0px rgba(0, 0, 0, 0.18);
 }
 
 .container:hover .chevron {
@@ -28,7 +33,7 @@
 }
 
 .container:focus {
-  box-shadow: var(--a-shadow-focus);
+  box-shadow: 0 0 0 3px var(--ax-border-accent-strong);
   outline: none;
 }
 
