@@ -11,6 +11,7 @@ permissions:
 jobs:
   test:
     name: Kjør typecheck og tester
+    if: github.actor != 'team-baks-digestabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98 # ratchet:actions/checkout@v4
@@ -34,6 +35,7 @@ jobs:
 
   bygg:
     name: Bygg app
+    if: github.actor != 'team-baks-digestabot[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: "read"
