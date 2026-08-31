@@ -20,7 +20,7 @@
     "validate": "npm run typecheck && npm run check"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.9",
+    "@astrojs/check": "0.9.10",
     "@astrojs/node": "10.1.2",
     "@astrojs/react": "5.0.6",
     "@navikt/aksel-icons": "8.11.0",
@@ -30,17 +30,17 @@
     "@navikt/pino-logger": "5.0.0",
     "astro": "6.4.2",
     "pino": "10.3.1",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.10",
     "@types/node": "24.12.4",
-    "@types/react": "19.2.15",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
     "husky": "9.1.7",
     "lint-staged": "17.3.0",
-    "postcss": "8.5.15",
+    "postcss": "8.5.26",
     "postcss-prefix-selector": "2.1.1",
     "typescript": "6.0.3"
   },
