@@ -9,13 +9,15 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
-    "lint": "eslint './src/**/*.{js,ts,tsx}'",
-    "lint:fix": "eslint './src/**/*.{js,ts,tsx}' --fix",
-    "prettier": "prettier --plugin=prettier-plugin-astro --check './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
-    "prettier:fix": "prettier --plugin=prettier-plugin-astro --write './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "echo \"No tests yet\"",
-    "validate": "yarn typecheck && yarn lint && yarn prettier"
+    "validate": "npm run typecheck && npm run check"
   },
   "dependencies": {
     "@astrojs/check": "0.9.9",
@@ -32,27 +34,19 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
-    "@eslint/js": "9.39.4",
+    "@biomejs/biome": "2.5.10",
     "@types/node": "24.12.4",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
-    "eslint": "9.39.4",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.5",
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
     "postcss": "8.5.15",
     "postcss-prefix-selector": "2.1.1",
-    "prettier": "3.8.3",
-    "prettier-plugin-astro": "0.14.1",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.60.0"
+    "typescript": "6.0.3"
   },
   "lint-staged": {
-    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro,css,md,html}": [
-      "prettier --plugin=prettier-plugin-astro --check './src/**/*.{js,jsx,ts,tsx,json,css,astro}'",
-      "eslint --max-warnings=30"
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css,astro}": [
+      "biome check ."
     ]
   }
 }

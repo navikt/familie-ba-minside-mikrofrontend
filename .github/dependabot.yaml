@@ -14,6 +14,7 @@ updates:
       - dependency-name: "@types/node"
         versions:
           - "25"
+          - "26"
     groups:
       aksel:
         patterns:
@@ -35,14 +36,7 @@ updates:
           - "@types/react-dom"
       tooling:
         patterns:
-          - "@eslint/js"
-          - "eslint"
-          - "eslint-config-prettier"
-          - "eslint-plugin-jsx-a11y"
-          - "eslint-plugin-react"
-          - "typescript-eslint"
-          - "prettier"
-          - "prettier-plugin-astro"
+          - "@biomejs/biome"
           - "lint-staged"
           - "husky"
       patch-updates:
