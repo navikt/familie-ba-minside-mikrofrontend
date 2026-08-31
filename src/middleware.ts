@@ -1,7 +1,7 @@
 import { getToken, validateTokenxToken } from "@navikt/oasis";
 import { logger } from "@navikt/pino-logger";
-import { defineMiddleware } from "astro/middleware";
 import { isInternal, isLocal } from "@src/utils/environment.ts";
+import { defineMiddleware } from "astro/middleware";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
