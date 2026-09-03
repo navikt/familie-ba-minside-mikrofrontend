@@ -15,19 +15,14 @@ jobs:
 
     steps:
       - uses: "actions/checkout@v7.0.1"
-      - uses: "actions/setup-node@v7.0.0"
+      - name: "Set up node and install pnpm packages"
+        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: 24
-          registry-url: "https://npm.pkg.github.com"
-          cache: "npm"
-
-      - name: "Install dependencies"
-        run: "npm ci --ignore-scripts"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+          node-version: '24'
+          reader-token: ${{ secrets.READER_TOKEN }}
 
       - name: "Build application"
-        run: "npm run build"
+        run: "pnpm build"
 
       - name: "Upload to cdn"
         uses: nais/deploy/actions/cdn-upload/v2@master

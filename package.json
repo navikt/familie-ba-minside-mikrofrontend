@@ -2,6 +2,7 @@
   "name": "familie-ba-minside-mikrofrontend",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@11.15.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -17,7 +18,7 @@
     "check:fix": "biome check --write .",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "echo \"No tests yet\"",
-    "validate": "npm run typecheck && npm run check"
+    "validate": "pnpm typecheck && pnpm check"
   },
   "dependencies": {
     "@astrojs/check": "0.9.10",
