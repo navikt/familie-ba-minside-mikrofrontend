@@ -67,8 +67,8 @@ importers:
         specifier: 8.5.26
         version: 8.5.26
       postcss-prefix-selector:
-        specifier: 2.1.1
-        version: 2.1.1(postcss@8.5.26)
+        specifier: 2.2.0
+        version: 2.2.0(postcss@8.5.26)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -1698,8 +1698,8 @@ packages:
     resolution: {integrity: sha512-r34yH/GlQpKZbU1BvFFqOjhISRo1MNx1tWYsYvmj6KIRHSPMT2+yHOEb1SG6NMvRoHRF0a07kCOox/9yakl1vg==}
     hasBin: true
 
-  postcss-prefix-selector@2.1.1:
-    resolution: {integrity: sha512-ZBgf427Et6+XnrnJ9VXtJEKCjJwTvn2wn/qMg+wvvlRhIeFIAxdbrlZZ0CSsWYMJfcyPLBh8ogj5O1kb/Mcx3g==}
+  postcss-prefix-selector@2.2.0:
+    resolution: {integrity: sha512-pGKK57v2SXKo5CD41tAnFh82Y+cxvS3lgTtt7e2YatH1nS3ADTI+U3Lk/NfG+xBz9fyU0KAYoBs1YVwqmGZ9nA==}
     peerDependencies:
       postcss: ^8.0.0
 
@@ -3852,7 +3852,7 @@ snapshots:
       sonic-boom: 4.2.1
       thread-stream: 4.0.0
 
-  postcss-prefix-selector@2.1.1(postcss@8.5.26):
+  postcss-prefix-selector@2.2.0(postcss@8.5.26):
     dependencies:
       postcss: 8.5.26
 
