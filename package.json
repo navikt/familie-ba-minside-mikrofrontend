@@ -29,7 +29,7 @@
     "@navikt/ds-react": "8.16.1",
     "@navikt/oasis": "4.1.4",
     "@navikt/pino-logger": "5.0.1",
-    "astro": "7.3.3",
+    "astro": "7.3.5",
     "pino": "10.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8"
@@ -41,7 +41,7 @@
     "@types/react-dom": "19.2.5",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "postcss": "8.5.26",
+    "postcss": "8.5.28",
     "postcss-prefix-selector": "2.2.1",
     "typescript": "6.0.3"
   },
