@@ -33,7 +33,7 @@ jobs:
         run: "pnpm build"
 
       - name: "Upload to cdn"
-        uses: nais/deploy/actions/cdn-upload/v2@1064e26587ab2794266a35f477387e561899a7ef # ratchet:nais/deploy/actions/cdn-upload/v2@master
+        uses: nais/deploy/actions/cdn-upload/v2@3944168fd20b7eea3818e97de3810f74b54c78ff # ratchet:nais/deploy/actions/cdn-upload/v2@master
         with:
           team: teamfamilie
           source: ./dist/client/_astro
