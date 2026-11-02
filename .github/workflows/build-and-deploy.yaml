@@ -94,7 +94,7 @@ jobs:
         with:
           persist-credentials: false
       - name: "Deploy to dev"
-        uses: "nais/deploy/actions/deploy@1064e26587ab2794266a35f477387e561899a7ef" # ratchet:nais/deploy/actions/deploy@v2
+        uses: "nais/deploy/actions/deploy@3944168fd20b7eea3818e97de3810f74b54c78ff" # ratchet:nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
           RESOURCE: nais/dev-gcp/nais.yaml
@@ -112,7 +112,7 @@ jobs:
         with:
           persist-credentials: false
       - name: "Deploy to prod"
-        uses: "nais/deploy/actions/deploy@1064e26587ab2794266a35f477387e561899a7ef" # ratchet:nais/deploy/actions/deploy@v2
+        uses: "nais/deploy/actions/deploy@3944168fd20b7eea3818e97de3810f74b54c78ff" # ratchet:nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
           RESOURCE: nais/prod-gcp/nais.yaml
