@@ -41,7 +41,7 @@ jobs:
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
       - name: "Build and push"
-        uses: nais/docker-build-push@dd7421d5068057a020ca46ead966c26190c516b1 # ratchet:nais/docker-build-push@v0
+        uses: nais/docker-build-push@ceabe305c64640175f133b7e59af6666b0a3c46c # ratchet:nais/docker-build-push@v0
         id: docker-build-push
         with:
           team: teamfamilie
