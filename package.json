@@ -21,15 +21,15 @@
     "validate": "pnpm typecheck && pnpm check"
   },
   "dependencies": {
-    "@astrojs/check": "0.9.11",
-    "@astrojs/node": "11.1.9",
-    "@astrojs/react": "7.1.0",
+    "@astrojs/check": "0.9.12",
+    "@astrojs/node": "11.1.11",
+    "@astrojs/react": "7.1.4",
     "@navikt/aksel-icons": "8.19.2",
     "@navikt/ds-css": "8.19.2",
     "@navikt/ds-react": "8.19.2",
     "@navikt/oasis": "4.2.2",
-    "@navikt/pino-logger": "5.0.1",
-    "astro": "7.4.1",
+    "@navikt/pino-logger": "5.0.2",
+    "astro": "7.4.7",
     "pino": "10.4.0",
     "react": "19.3.1",
     "react-dom": "19.3.1"
@@ -41,7 +41,7 @@
     "@types/react-dom": "19.3.0",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "postcss": "8.5.31",
+    "postcss": "8.5.32",
     "postcss-prefix-selector": "2.2.1",
     "typescript": "6.0.3"
   },
