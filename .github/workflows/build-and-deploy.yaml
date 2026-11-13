@@ -64,7 +64,7 @@ jobs:
       commitmsg: ${{ github.event.head_commit.message}}
       fallback: "fallback"
       ssr: true
-    secrets: inherit
+    secrets: inherit # zizmor: ignore[secrets-inherit] tms-deploy deklarerer ikke secrets i workflow_call
 
   update-manifest-prod:
     if: github.ref == 'refs/heads/main'
@@ -81,7 +81,7 @@ jobs:
       commitmsg: ${{ github.event.head_commit.message}}
       fallback: "fallback"
       ssr: true
-    secrets: inherit
+    secrets: inherit # zizmor: ignore[secrets-inherit] tms-deploy deklarerer ikke secrets i workflow_call
 
   deploy-dev:
     runs-on: "ubuntu-latest"
