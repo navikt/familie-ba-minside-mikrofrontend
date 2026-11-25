@@ -5,7 +5,7 @@ Mikrofrontend for [familie-ba-minside-frontend](https://github.com/navikt/famili
 # Kom i gang
 
 1. Kjør `nvm use` (Node-versjonen ligger i `.nvmrc`)
-2. Aktiver riktig pnpm-versjon med `corepack enable` (henter versjonen fra `packageManager` i package.json)
+2. Installer Corepack med `npm install -g corepack` (følger ikke lenger med Node) og aktiver riktig pnpm-versjon med `corepack enable` (henter versjonen fra `packageManager` i package.json)
 3. Installer avhengigheter med `pnpm install`
 4. Start appen lokalt ved å kjøre `pnpm dev`
 5. Appen nås på http://localhost:4321/
